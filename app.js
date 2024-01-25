@@ -11,7 +11,7 @@ guardarDatos();
 app.get('/', async (req, res) => {
 
     leerDatos();
-  
+    res.send(noticias);
 });
 
 app.delete('/:indice', (req, res) => {
@@ -48,7 +48,7 @@ function leerDatos() {
 };
 
 async function guardarDatos() {
-    noticias = await scraping();   
+    noticias = await scraping();
     fs.writeFileSync('noticias.json', JSON.stringify(noticias, null, 2));
 };
 
